@@ -1,0 +1,31 @@
+Schema and Table Metadata
+SELECT * FROM `region-us-central1`.INFORMATION_SCHEMA.SCHEMATA;
+SELECT * FROM `project-id.dataset-id.INFORMATION_SCHEMA.TABLES`;
+SELECT * FROM `project-id.dataset-id.INFORMATION_SCHEMA.COLUMNS`;
+Job and Query Metadata
+SELECT * FROM `region-us-central1`.INFORMATION_SCHEMA.JOBS_BY_USER;
+SELECT * FROM `region-us-central1`.INFORMATION_SCHEMA.JOBS_BY_PROJECT;
+Other
+SELECT * FROM `project-id.dataset-id.INFORMATION_SCHEMA.COLUMN_FIELD_PATHS`;
+SELECT * FROM `project-id.dataset-id.INFORMATION_SCHEMA.PARTITIONS`;
+
+SELECT * FROM `project-id.dataset-id.INFORMATION_SCHEMA.ROUTINES`;
+SELECT * FROM `project-id.dataset-id.INFORMATION_SCHEMA.TABLE_STORAGE`;
+SELECT * FROM `region-us-central1`.INFORMATION_SCHEMA.SESSION_QUERY_STATS;
+
+Listing All Tables in a Dataset
+SELECT table_name, table_type, creation_time
+
+Listing All Columns in a Table
+SELECT column_name, data_type, is_nullable
+FROM `project-id.dataset-id.INFORMATION_SCHEMA.COLUMNS`
+WHERE table_name = 'your_table_name';
+
+Listing All Jobs Run by the Current User
+SELECT job_id, creation_time, state, query
+FROM `region-us-central1`.INFORMATION_SCHEMA.JOBS_BY_USER
+WHERE creation_time > TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 DAY);
+
+Listing All Routines in a Dataset
+SELECT routine_name, routine_type, creation_time
+FROM `project-id.dataset-id.INFORMATION_SCHEMA.ROUTINES`;
